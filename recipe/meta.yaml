@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/conda/conda.git
+  git_url: https://github.com/jaimergp/conda.git
   git_rev: cep-menuinst
   patches:
     - gh9946_utf_16_replacement.patch
