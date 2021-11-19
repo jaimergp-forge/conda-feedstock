@@ -6,7 +6,6 @@ package:
   version: {{ version }}
 
 source:
-  fn: conda-{{ version }}.tar.gz
   git_url: https://github.com/conda/conda.git
   git_rev: cep-menuinst
   patches:
