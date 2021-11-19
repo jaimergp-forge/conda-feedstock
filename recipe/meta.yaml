@@ -13,6 +13,8 @@ source:
     - gh10970.patch
 
 build:
+  skip: True  # [python_impl != 'cpython']
+  skip: True  # [build_platform != target_platform]
   number: 0
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
