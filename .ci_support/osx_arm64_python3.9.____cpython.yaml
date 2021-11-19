@@ -1,9 +1,9 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
 channel_sources:
-- conda-forge
+- napari/label/bundle_tools,conda-forge
 channel_targets:
-- conda-forge main
+- napari bundle_tools
 macos_machine:
 - arm64-apple-darwin20.0.0
 pin_run_as_build:
