@@ -8,6 +8,7 @@ package:
 source:
   git_url: https://github.com/jaimergp/conda.git
   git_rev: cep-menuinst
+  folder: conda-source
   patches:
     - gh9946_utf_16_replacement.patch
     - gh10970.patch
