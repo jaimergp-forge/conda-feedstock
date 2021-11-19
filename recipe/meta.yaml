@@ -7,9 +7,9 @@ package:
 
 source:
   url: https://github.com/jaimergp/conda/archive/cep-menuinst.tar.gz
-  patches:
-    - gh9946_utf_16_replacement.patch
-    - gh10970.patch
+  # patches:
+  #   - gh9946_utf_16_replacement.patch
+  #   - gh10970.patch
 
 build:
   skip: True  # [python_impl != 'cpython']
