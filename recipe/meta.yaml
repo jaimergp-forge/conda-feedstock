@@ -13,8 +13,7 @@ source:
 
 build:
   skip: True  # [python_impl != 'cpython']
-  skip: True  # [build_platform != target_platform]
-  number: 0
+  number: 1
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
