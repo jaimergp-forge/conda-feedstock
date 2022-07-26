@@ -40,16 +40,41 @@ conda config --add channels napari
 conda config --set channel_priority strict
 ```
 
-Once the `napari` channel has been enabled, `conda` can be installed with:
+Once the `napari` channel has been enabled, `conda` can be installed with `conda`:
 
 ```
 conda install conda
 ```
 
-It is possible to list all of the versions of `conda` available on your platform with:
+or with `mamba`:
+
+```
+mamba install conda
+```
+
+It is possible to list all of the versions of `conda` available on your platform with `conda`:
 
 ```
 conda search conda --channel napari
+```
+
+or with `mamba`:
+
+```
+mamba search conda --channel napari
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search conda --channel napari
+
+# List packages depending on `conda`:
+mamba repoquery whoneeds conda --channel napari
+
+# List dependencies of `conda`:
+mamba repoquery depends conda --channel napari
 ```
 
 
