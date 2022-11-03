@@ -8,3 +8,4 @@ provider:
 channels:
   targets:
     - - napari
+upload_on_branch: master
