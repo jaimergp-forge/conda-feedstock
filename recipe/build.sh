@@ -14,7 +14,7 @@ fi
 
 echo $PKG_VERSION > conda/.version
 "$PYTHON" setup.py install --single-version-externally-managed --record record.txt
-if [[ $(uname -o) != Msys ]]; then
+if [[ $(uname -o || true) != Msys ]]; then
   rm -rf "$SP_DIR/conda/shell/*.exe"
 fi
 "$PYTHON" -I -m conda init --install
