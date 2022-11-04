@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/jaimergp/conda/archive/cep-menuinst.tar.gz
+  url: https://github.com/conda/conda/archive/cep-menuinst.tar.gz
   patches:
     - gh9946_utf_16_replacement.patch
 
