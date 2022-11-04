@@ -8,3 +8,5 @@ provider:
 channels:
   targets:
     - - napari
+upload_on_branch: master
+remote_ci_setup: ["conda-forge-ci-setup=3", "py-lief<0.12", "pluggy>=1"]

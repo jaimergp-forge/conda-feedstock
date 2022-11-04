@@ -1,14 +1,12 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "4.14a" %}
+{% set version = "22.9.0.post1" %}
 
 package:
   name: conda
   version: {{ version }}
 
 source:
-  url: https://github.com/jaimergp/conda/archive/cep-menuinst.tar.gz
-  patches:
-    - gh9946_utf_16_replacement.patch
+  url: https://github.com/conda/conda/archive/cep-menuinst.tar.gz
 
 build:
   skip: True  # [python_impl != 'cpython']
@@ -37,8 +35,10 @@ requirements:
     - conda-package-handling >=1.3.0
     - menuinst >=2.0a
     - pip
-    - ruamel_yaml >=0.11.14,<0.16
+    - ruamel.yaml >=0.11.14,<0.17
     - setuptools >=31.0.1
+    - toolz >=0.8.1
+    - pluggy >=1.0.0
   run:
     - python
     - conda-package-handling >=1.3.0
@@ -46,8 +46,11 @@ requirements:
     - pycosat >=0.6.3
     - pyopenssl >=16.2.0
     - requests >=2.18.4,<3
-    - ruamel_yaml >=0.11.14,<0.16
+    - ruamel.yaml >=0.11.14,<0.17
     - setuptools >=31.0.1
+    - toolz >=0.8.1
+    - pluggy >=1.0.0
+    - tqdm >=4
   run_constrained:
     - conda-build >=3
     - conda-content-trust >=0.1.1

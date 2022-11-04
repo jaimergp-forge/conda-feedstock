@@ -33,9 +33,9 @@ CONDARC
 
 
 mamba install --update-specs --yes --quiet --channel conda-forge \
-    conda-build pip boa conda-forge-ci-setup=3
+    conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12" "pluggy>=1"
 mamba update --update-specs --yes --quiet --channel conda-forge \
-    conda-build pip boa conda-forge-ci-setup=3
+    conda-build pip boa conda-forge-ci-setup=3 "py-lief<0.12" "pluggy>=1"
 
 # set up the condarc
 setup_conda_rc "${FEEDSTOCK_ROOT}" "${RECIPE_ROOT}" "${CONFIG_FILE}"

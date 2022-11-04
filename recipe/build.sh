@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     # conda-build special cases conda and doesn't activate it
     # See https://github.com/conda/conda-build/blob/1010e8309a20e144c51b1d86b2daebd146be923e/conda_build/metadata.py#L2273
@@ -11,17 +13,19 @@ if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     done
 fi
 
+set -euo pipefail
+
 echo $PKG_VERSION > conda/.version
-$PYTHON setup.py install --single-version-externally-managed --record record.txt
-if [[ $(uname -o) != Msys ]]; then
+"$PYTHON" setup.py install --single-version-externally-managed --record record.txt
+if [[ $(uname -o || true) != Msys ]]; then
   rm -rf "$SP_DIR/conda/shell/*.exe"
 fi
-$PYTHON -m conda init --install
-if [[ $(uname -o) == Msys ]]; then
+"$PYTHON" -m conda init --install
+if [[ $(uname -o || true) == Msys ]]; then
   sed -i "s|CONDA_EXE=.*|CONDA_EXE=\'${PREFIXW//\\/\\\\}\\\\Scripts\\\\conda.exe\'|g" $PREFIX/etc/profile.d/conda.sh
 fi
 
-if [[ "$RUN_DEACTIVATE_MANUALLY" == 1 ]]; then
+if [[ "${RUN_DEACTIVATE_MANUALLY:-}" == "1" ]]; then
      for file in `ls $BUILD_PREFIX/etc/conda/deactivate.d/*.sh | sort -V`; do
          source $file
      done
