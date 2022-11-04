@@ -1,5 +1,6 @@
 #!/bin/bash
-set -euxo pipefail
+
+set -x
 
 if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     # conda-build special cases conda and doesn't activate it
@@ -11,6 +12,8 @@ if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
         source $file
     done
 fi
+
+set -euo pipefail
 
 echo $PKG_VERSION > conda/.version
 "$PYTHON" setup.py install --single-version-externally-managed --record record.txt
