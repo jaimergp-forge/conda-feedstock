@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euxo pipefail
+set -ex
 
 if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     # conda-build special cases conda and doesn't activate it
