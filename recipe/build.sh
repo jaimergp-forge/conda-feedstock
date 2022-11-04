@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -euxo pipefail
 
 if [[ "$build_platform" != "$target_platform" && -z "$PYTHONPATH" ]]; then
     # conda-build special cases conda and doesn't activate it
@@ -22,7 +22,7 @@ if [[ $(uname -o || true) == Msys ]]; then
   sed -i "s|CONDA_EXE=.*|CONDA_EXE=\'${PREFIXW//\\/\\\\}\\\\Scripts\\\\conda.exe\'|g" $PREFIX/etc/profile.d/conda.sh
 fi
 
-if [[ "$RUN_DEACTIVATE_MANUALLY" == 1 ]]; then
+if [[ "${RUN_DEACTIVATE_MANUALLY:-}" == "1" ]]; then
      for file in `ls $BUILD_PREFIX/etc/conda/deactivate.d/*.sh | sort -V`; do
          source $file
      done
