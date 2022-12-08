@@ -1,5 +1,5 @@
 {% set on_win = SUBDIR in ('win-64', 'win-32') %}
-{% set version = "22.9.0.post1" %}
+{% set version = "22.9.0.post2" %}
 
 package:
   name: conda
