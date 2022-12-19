@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -ex
-
 # Deactivate external conda.
 source deactivate
 
@@ -10,14 +8,14 @@ export CONDARC="$PREFIX/.condarc"
 export CONDA_ENVS_DIRS="$PREFIX/envs"
 export CONDA_PKGS_DIRS="$PREFIX/pkgs"
 touch "$CONDARC"
-mkdir -p "$CONDA_ENVS_DIRS"
-mkdir -p "$CONDA_PKGS_DIRS"
+mkdir "$CONDA_ENVS_DIRS"
+mkdir "$CONDA_PKGS_DIRS"
 
 # Activate the built conda.
 source $PREFIX/bin/activate $PREFIX
 
 # Run conda tests.
-source ./test_conda.sh
+source ./commands_to_test.sh
 
 # Deactivate the built conda when done.
 # Not necessary, but a good test.
