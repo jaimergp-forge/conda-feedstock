@@ -1,19 +1,23 @@
-About conda
-===========
+About conda-feedstock
+=====================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-feedstock/blob/main/LICENSE.txt)
 
 Home: https://conda.io
 
 Package license: BSD-3-Clause
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/conda-feedstock/blob/master/LICENSE.txt)
-
 Summary: OS-agnostic, system-level binary package and environment manager.
 
 Development: https://github.com/conda/conda
 
-Documentation: https://conda.io/projects/conda/en/latest/
+Documentation: https://docs.conda.io/projects/conda/en/stable/
 
-Conda is an open source package management system and environment management system for installing multiple versions of software packages and their dependencies and switching easily between them. It works on Linux, OS X and Windows, and was created for Python programs but can package and distribute any software.
+Conda is an open source package management system and environment
+management system for installing multiple versions of software packages
+and their dependencies and switching easily between them. It works on
+Linux, OS X and Windows, and was created for Python programs but can
+package and distribute any software.
 
 
 Current build status
@@ -105,17 +109,11 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@dbast](https://github.com/dbast/)
 * [@isuruf](https://github.com/isuruf/)
 * [@jakirkham](https://github.com/jakirkham/)
 * [@jezdez](https://github.com/jezdez/)
-* [@kalefranz](https://github.com/kalefranz/)
+* [@kenodegard](https://github.com/kenodegard/)
 * [@mbargull](https://github.com/mbargull/)
-* [@mcg1969](https://github.com/mcg1969/)
-* [@mingwandroid](https://github.com/mingwandroid/)
-* [@msarahan](https://github.com/msarahan/)
-* [@mwcraig](https://github.com/mwcraig/)
 * [@ocefpaf](https://github.com/ocefpaf/)
-* [@patricksnape](https://github.com/patricksnape/)
-* [@pelson](https://github.com/pelson/)
-* [@scopatz](https://github.com/scopatz/)
 

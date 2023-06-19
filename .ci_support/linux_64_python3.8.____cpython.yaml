@@ -1,9 +1,9 @@
 cdt_name:
 - cos6
 channel_sources:
-- napari/label/bundle_tools_2,conda-forge
+- napari/label/bundle_tools_3,conda-forge
 channel_targets:
-- napari bundle_tools_2
+- napari bundle_tools_3
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 pin_run_as_build:
@@ -12,10 +12,5 @@ pin_run_as_build:
     max_pin: x.x
 python:
 - 3.8.* *_cpython
-python_impl:
-- cpython
 target_platform:
 - linux-64
-zip_keys:
-- - python
-  - python_impl
