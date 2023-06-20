@@ -118,7 +118,7 @@ jobs:
       shell: cmd
       run: |
         call activate base
-        mamba.exe install -c conda-forge 'python=3.9' conda-build conda pip boa conda-forge-ci-setup=3 "py-lief<0.12" "pluggy>=1"
+        mamba.exe install -c conda-forge 'python=3.10' conda-build conda pip boa conda-forge-ci-setup=3
         if errorlevel 1 exit 1
         setup_conda_rc .\ ".\recipe" .\.ci_support\%CONFIG%.yaml
         if errorlevel 1 exit 1
@@ -138,8 +138,6 @@ jobs:
         )
         validate_recipe_outputs "%FEEDSTOCK_NAME%"
         if errorlevel 1 exit 1
-        python -m pip install https://github.com/jaimergp/anaconda-client/archive/fix-rmtree.tar.gz --no-deps
-        if errorlevel 1 exit 1
         if /i "%UPLOAD_PACKAGES%" == "true" (
           if /i "%IS_PR_BUILD%" == "false" (
             upload_package --validate --feedstock-name="%FEEDSTOCK_NAME%" .\ ".\recipe" .ci_support\%CONFIG%.yaml
@@ -154,6 +152,6 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
         FEEDSTOCK_TOKEN: ${{ secrets.FEEDSTOCK_TOKEN }}
         STAGING_BINSTAR_TOKEN: ${{ secrets.STAGING_BINSTAR_TOKEN }}
-        TEMP: ${{ runner.temp}}
-        TMP: ${{ runner.temp}}
+        TEMP: ${{ runner.temp }}
+        TMP: ${{ runner.temp }}
       if: matrix.os == 'windows'
