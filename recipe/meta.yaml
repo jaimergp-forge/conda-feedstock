@@ -10,12 +10,12 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/conda/conda.git
-  git_rev: {{ git_rev }}
+  url: https://github.com/conda/conda/archive/{{ git_rev }}.tar.gz
+  folder: conda-src
 
 build:
   number: 1
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
+  script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -42,6 +42,7 @@ requirements:
     - hatchling >=1.12.2
     - hatch-vcs >=0.2.0
     # for `conda init` in build/script above
+    - requests >=2.20.1,<3
     - ruamel.yaml >=0.11.14,<0.18
     - tqdm >=4
     # - menuinst >=1.4.11,<2         # [win]
@@ -72,8 +73,8 @@ requirements:
 test:
 {% if run_pytest == 'yes' %}
   source_files:
-    - tests
-    - setup.cfg
+    - conda-src/tests
+    - conda-src/setup.cfg
 {% endif %}
   requires:
     - mock
@@ -88,16 +89,11 @@ test:
   imports:
     - conda
     - conda_env
-  files:
-    - test_runner.bat                # [win]
-    - test_runner.sh                 # [unix]
-    - commands_to_test.bat           # [win]
-    - commands_to_test.sh            # [unix]
 
 about:
   home: https://conda.io
   license: BSD-3-Clause
-  license_file: LICENSE
+  license_file: conda-src/LICENSE
   summary: OS-agnostic, system-level binary package and environment manager.
   description: |
     Conda is an open source package management system and environment
