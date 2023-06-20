@@ -140,6 +140,9 @@ jobs:
         if errorlevel 1 exit 1
         if /i "%UPLOAD_PACKAGES%" == "true" (
           if /i "%IS_PR_BUILD%" == "false" (
+            set "TEMP=%RUNNER_WORKSPACE%\tmp"
+            set "TMP=%RUNNER_WORKSPACE%\tmp"
+            mkdir "%TEMP%"
             upload_package --validate --feedstock-name="%FEEDSTOCK_NAME%" .\ ".\recipe" .ci_support\%CONFIG%.yaml
           )
         )
