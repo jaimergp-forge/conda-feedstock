@@ -10,8 +10,7 @@ package:
   version: {{ version }}
 
 source:
-  git_url: https://github.com/conda/conda.git
-  git_rev: {{ git_rev }}
+  url: https://github.com/conda/conda/archive/{{ git_rev }}.tar.gz
   folder: conda-src
 
 build:
