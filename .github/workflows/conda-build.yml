@@ -120,6 +120,8 @@ jobs:
         call activate base
         mamba.exe install -c conda-forge 'python=3.9' conda-build conda pip boa conda-forge-ci-setup=3 "py-lief<0.12" "pluggy>=1"
         if errorlevel 1 exit 1
+        pip install https://github.com/jaimergp/anaconda-client/archive/fix-rmtree.tar.gz --no-deps
+        if errorlevel 1 exit 1
         setup_conda_rc .\ ".\recipe" .\.ci_support\%CONFIG%.yaml
         if errorlevel 1 exit 1
         
