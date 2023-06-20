@@ -12,10 +12,11 @@ package:
 source:
   git_url: https://github.com/conda/conda.git
   git_rev: {{ git_rev }}
+  folder: conda-src
 
 build:
   number: 1
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
+  script: {{ PYTHON }} -m pip install conda-src/ --no-deps --no-build-isolation -vv && {{ PYTHON }} -m conda init --install
   # These are present when the new environment is created
   # so we have to exempt them from the list of initial files
   # for conda-build to realize they should be included.
@@ -72,8 +73,8 @@ requirements:
 test:
 {% if run_pytest == 'yes' %}
   source_files:
-    - tests
-    - setup.cfg
+    - conda-src/tests
+    - conda-src/setup.cfg
 {% endif %}
   requires:
     - mock
@@ -88,11 +89,6 @@ test:
   imports:
     - conda
     - conda_env
-  files:
-    - test_runner.bat                # [win]
-    - test_runner.sh                 # [unix]
-    - commands_to_test.bat           # [win]
-    - commands_to_test.sh            # [unix]
 
 about:
   home: https://conda.io
