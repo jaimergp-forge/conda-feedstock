@@ -117,9 +117,6 @@ jobs:
     - name: Build on windows
       shell: cmd
       run: |
-        set "TEMP=%USERPROFILE%\AppData\Local\Temp"
-        set "TMP=%USERPROFILE%\AppData\Local\Temp"
-
         call activate base
         mamba.exe install -c conda-forge 'python=3.9' conda-build conda pip boa conda-forge-ci-setup=3 "py-lief<0.12" "pluggy>=1"
         if errorlevel 1 exit 1
@@ -155,4 +152,6 @@ jobs:
         BINSTAR_TOKEN: ${{ secrets.BINSTAR_TOKEN }}
         FEEDSTOCK_TOKEN: ${{ secrets.FEEDSTOCK_TOKEN }}
         STAGING_BINSTAR_TOKEN: ${{ secrets.STAGING_BINSTAR_TOKEN }}
+        TEMP: ${{ runner.temp}}
+        TMP: ${{ runner.temp}}
       if: matrix.os == 'windows'
